@@ -1,8 +1,11 @@
-version: "3"
+version: '3.8'
+
 services:
-  mlb-discord-bot:
+  mlb-bot:
     build: .
-    environment:
-      - DISCORD_TOKEN=your-bot-token-here
-      - DISCORD_CHANNEL_ID=your-channel-id-here
+    container_name: mlb-dinger-snitch
     restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app
